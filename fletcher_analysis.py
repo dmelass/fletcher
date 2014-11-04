@@ -209,35 +209,35 @@ if __name__ == '__main__':
     to_log('------------------------------')
 
     # start analyses
-    # stop_words_cluster = stopwords.words('english') # create stopwords
-    # stop_words_cluster.extend(["http","RT","rt","co","ferguson","fergusonoctober"]) # append stopwords
+    stop_words_cluster = stopwords.words('english') # create stopwords
+    stop_words_cluster.extend(["http","RT","rt","co","ferguson","fergusonoctober"]) # append stopwords
     all_tweets = get_tweets() # get all tweets, RTs included
     unique_tweets = get_unique_tweets() # get only non-RT tweets
     calculate_retweets(all_tweets, unique_tweets)
-    # vectorizer = create_vectorizer(stop_words_cluster,1) # create vectorizer
-    # X = fit_vectorizer(unique_tweets, vectorizer) # fit vectorizer
-    # clusters = cluster_minibatchk(k, X) # create clusters
-    # dict_tweets = create_cluster_dicts(clusters,unique_tweets) # create dictionary of clustered tweets
-    # all_tweets_by_cluster = [] # each element is a string of all the tweets together
-    # for i in range(k):
-    #     all_tweets_by_cluster.append(tweets_to_string(dict_tweets[i]))
-    # vectorizer_corpus_1gram = create_vectorizer(stop_words_cluster,1) # vectorizer for clusters, 1gram
-    # X_corpus_1gram = fit_vectorizer(all_tweets_by_cluster, vectorizer_corpus_1gram)
-    # vectorizer_corpus_2gram = create_vectorizer(stop_words_cluster, 2) # vectorizer for clusters, 2gram
-    # X_corpus_2gram = fit_vectorizer(all_tweets_by_cluster, vectorizer_corpus_2gram)
-    # cluster_sizes = create_cluster_sizes(k, dict_tweets) # get cluster sizes
-    # num_nonzero_clusters(cluster_sizes) # get number of nonzero clusters
-    # x = 10 # number of clusters to focus on
-    # m = 15 # number of words/terms to show
-    # top_clusters = get_top_clusters(x,cluster_sizes) # get top x clusters
-    # for cluster_num,cluster_size in top_clusters.items(): # for each cluster
-    #     this_cluster_tweets = dict_tweets[cluster_num] # get array of tweets for this cluster
-    #     to_log('word counts for cluster number '+str(cluster_num) + ' with a size: ' + str(cluster_size))
-    #     get_top_words(m,this_cluster_tweets)
-    #     to_log('tfidf values for cluster number '+str(cluster_num) + ' with a size: ' + str(cluster_size)+' ngram = 1')
-    #     get_tfidf_values(m,X_corpus_1gram,vectorizer_corpus_1gram,cluster_num)
-    #     to_log('tfidf values for cluster number '+str(cluster_num) + ' with a size: ' + str(cluster_size)+' ngram = 2')
-    #     get_tfidf_values(m,X_corpus_2gram,vectorizer_corpus_2gram,cluster_num)
+    vectorizer = create_vectorizer(stop_words_cluster,1) # create vectorizer
+    X = fit_vectorizer(unique_tweets, vectorizer) # fit vectorizer
+    clusters = cluster_minibatchk(k, X) # create clusters
+    dict_tweets = create_cluster_dicts(clusters,unique_tweets) # create dictionary of clustered tweets
+    all_tweets_by_cluster = [] # each element is a string of all the tweets together
+    for i in range(k):
+        all_tweets_by_cluster.append(tweets_to_string(dict_tweets[i]))
+    vectorizer_corpus_1gram = create_vectorizer(stop_words_cluster,1) # vectorizer for clusters, 1gram
+    X_corpus_1gram = fit_vectorizer(all_tweets_by_cluster, vectorizer_corpus_1gram)
+    vectorizer_corpus_2gram = create_vectorizer(stop_words_cluster, 2) # vectorizer for clusters, 2gram
+    X_corpus_2gram = fit_vectorizer(all_tweets_by_cluster, vectorizer_corpus_2gram)
+    cluster_sizes = create_cluster_sizes(k, dict_tweets) # get cluster sizes
+    num_nonzero_clusters(cluster_sizes) # get number of nonzero clusters
+    x = 10 # number of clusters to focus on
+    m = 15 # number of words/terms to show
+    top_clusters = get_top_clusters(x,cluster_sizes) # get top x clusters
+    for cluster_num,cluster_size in top_clusters.items(): # for each cluster
+        this_cluster_tweets = dict_tweets[cluster_num] # get array of tweets for this cluster
+        to_log('word counts for cluster number '+str(cluster_num) + ' with a size: ' + str(cluster_size))
+        get_top_words(m,this_cluster_tweets)
+        to_log('tfidf values for cluster number '+str(cluster_num) + ' with a size: ' + str(cluster_size)+' ngram = 1')
+        get_tfidf_values(m,X_corpus_1gram,vectorizer_corpus_1gram,cluster_num)
+        to_log('tfidf values for cluster number '+str(cluster_num) + ' with a size: ' + str(cluster_size)+' ngram = 2')
+        get_tfidf_values(m,X_corpus_2gram,vectorizer_corpus_2gram,cluster_num)
         
     # finalize log items
     end_time = datetime.now()
