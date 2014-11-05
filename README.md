@@ -8,4 +8,4 @@ tweet_collection.py - this script uses tweepy to use the API and pymongo to stor
 
 fletcher_analysis.py - this script uses MiniBatchKMeans from the sklearn module to create clusters.
 
-I wrote a <b>blog post</b> summarizing this project [here](www.github.com/dmelass/fletcher)
+I wrote a <b>blog post</b> summarizing this project [here](www.github.com/dmelass/fletcher).
