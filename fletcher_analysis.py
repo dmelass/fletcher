@@ -3,6 +3,7 @@
 
 # PROJECT FLETCHER ANALYSES
 # Dara Elass
+# Logging done with the help of Laurie Skelly
 
 # import modules
 import pymongo
