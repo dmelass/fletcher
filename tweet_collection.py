@@ -1,3 +1,5 @@
+# Tweet Collection
+# Dara Elass
 # This script was written with the help of Irmak Sirer.
 
 import requests
@@ -10,15 +12,11 @@ from pymongo import MongoClient
 import time, datetime
 import sys
 import dateutil.parser
+from auth_ids import consumer_key,consumer_secret,access_token,access_secret
 
 client = MongoClient()
 db = client.projectfletcher # create database
 twitter_data = db.twitterdata_with_retweets # create collection
-
-consumer_key = "KRjGyro3hXwdcpxPmBmDwRSMR"
-consumer_secret = "bBShkHPyqx1fDnhEDFleuQuuCxi1WnTZIMhAKxYg8NJPFbFdaJ"
-access_token = "2834111842-CkpQVeYGS40xBjBZj1iOILZ6MSQPFjIZs3Tcm6k"
-access_secret = "hEdPWbweLjFArC3qG32f3YVCx7EIUR223UQpClrT1fzzY"
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
