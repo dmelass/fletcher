@@ -1,4 +1,5 @@
-<b>PROJECT FLETCHER</b>
+Project Fletcher
+=======
 
 In this project, I gather tweets using Twitter's API in Python, and cluster them using MiniBatchKMeans.
 
